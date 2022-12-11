@@ -1,0 +1,183 @@
+ <!doctype html>
+<html lang="en">
+	<head>
+		<title>Mini Project</title>
+		<meta charset="utf-8">
+		<!-- Bootstrap CSS -->
+		<link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
+		<style></style>	
+	
+	</head>
+<body>
+		<div class="container">
+			<div class="row mt-4">
+				<div class="col-md-3">
+				<p>Subject</p>
+				<label>English</label>
+				</div>
+				<div class="col-md-3">
+				<p>Score</p>
+				<input type="text" name="eng" id="eng" class="form-control" oninput="
+					var score = document.getElementById('eng').value;
+					document.getElementById('english').value =grade1(score)">
+				</div>
+				<div class="col-md-3">
+				<p>Grade</p>
+				<input type="text" name="english" id="english" class="form-control" disabled>
+				</div>
+				</div>
+				
+			<div class="row mt-4">
+				<div class="col-md-3">
+				<label>Maths</label>
+				</div>
+				<div class="col-md-3">
+				<input type="text"  id="mat" class="form-control" oninput="
+					var score = document.getElementById('mat').value;
+					document.getElementById('math').value =grade1(score)">
+										
+				</div>
+				<div class="col-md-3">
+				<input type="text"  id="math" class="form-control" disabled>
+				</div>
+				</div>
+				
+			<div class="row mt-4">
+				<div class="col-md-3">
+				<label>Chemistry</label>
+				</div>
+				<div class="col-md-3">
+				<input type="text"  id="chem" class="form-control" oninput="
+					var score = document.getElementById('chem').value;
+					document.getElementById('chemistry').value =grade1(score)">
+				</div>
+				<div class="col-md-3">
+				<input type="text" id="chemistry" class="form-control" disabled>
+				</div>
+				</div>
+			
+			<div class="row mt-4">
+				<div class="col-md-3">
+				<label>Biology</label>
+				</div>
+				<div class="col-md-3">
+				<input type="text" id="bio" class="form-control" oninput="
+					var score = document.getElementById('bio').value;
+					document.getElementById('biology').value =grade1(score)">
+				</div>
+				<div class="col-md-3">
+				<input type="text" id="biology" class="form-control" disabled>
+				</div>
+				</div>
+			
+			<div class="row mt-4">
+				<div class="col-md-3">
+				<label>French</label>
+				</div>
+				<div class="col-md-3">
+				<input type="text"  id="fren" class="form-control" oninput="
+					var score = document.getElementById('fren').value;
+					document.getElementById('french').value =grade1(score)">
+						
+				</div>
+				<div class="col-md-3">
+				<input type="text" id="french" class="form-control" disabled>
+				</div>
+				</div>
+			<div class="col-md-4">
+			
+				<input type="button" value="Get Result" onclick="calculate()">
+				</div>
+		
+			<div class="col-md-6 mt-3">
+				<p id="tot"></p>
+			</div>
+			<div class="col-md-6">
+				<p id="average"></p>
+			</div>
+			<div class="col-md-6 ">
+				<p id="remark"></p>
+			</div>
+			
+			
+		</div>	
+	<!-- Internal JS -->
+	<script type="text/javascript" language="javascript">
+		//JS will be here
+		
+		function calculate(){
+		var english =(document.getElementById('eng').value)
+		var maths = (document.getElementById('mat').value)
+		var chemistry =( document.getElementById('chem').value)
+		var biology =(document.getElementById('bio').value)
+		var french =(document.getElementById('fren').value)
+		
+		var total = parseFloat(english) + parseFloat(maths) + parseFloat(chemistry) + parseFloat(biology) + parseFloat(french);
+		document.getElementById('tot').innerHTML = "Total "+total;
+
+		var ave = total/5;
+		document.getElementById('average').innerHTML = "AVERAGE: "+ave;
+		document.getElementById('average').innerHTML = "AVERAGE: "+ave;
+			if (english > 100 || maths > 100 || chemistry > 100 || biology > 100 || french > 100 ){
+			document.getElementById('tot').innerHTML = "TOTAL: select a score within the range of 100";
+			document.getElementById('average').innerHTML = "AVERAGE: select a score within the range of 100";
+			document.getElementById('remark').innerHTML = "REMARK: select a score within the range of 100";
+			}
+			else if (ave >=65){
+			document.getElementById('remark').innerHTML = "REMARK:     proud  of you!"
+			
+			}else if (ave >=45){
+			document.getElementById('remark').innerHTML = "REMARK:      proud of you!"
+			}else {
+			
+			document.getElementById('remark').innerHTML = "REMARK:      You disappointed Your Teacher"
+			}	
+		
+		}
+		scores = 0
+	
+		function grade1(scores){
+				var english =(document.getElementById('eng').value)
+				var maths = (document.getElementById('mat').value)
+				var chemistry =( document.getElementById('chem').value)
+				var biology =(document.getElementById('bio').value)
+				var french =(document.getElementById('fren').value)
+			
+			if (english > 100 || maths > 100 || chemistry > 100 || biology > 100 || french > 100 ){
+			
+				alert('select a score within the range of 100')
+				
+			}else if(scores <=100 && scores > 70){
+			
+				scores= "A"
+				
+			}else if (scores <= 68 && scores > 59){
+				 
+				scores = "B"
+			
+			}else if (scores <=59 && scores > 49){
+			
+				scores= "C"
+				
+			}else if (scores <=49 && scores > 39){
+			
+				scores= "D"
+				
+			}else if (scores <=39 && scores > 35){
+			
+				 
+				scores= "E"
+				
+			}else{
+			
+			scores= "F"
+				
+			}
+			return scores
+		
+		}
+		
+	</script>
+	
+</body>
+</html>
